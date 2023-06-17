@@ -17,7 +17,7 @@ const useData = <T>(endpoint: string) => {
 
     setIsLoading(true);
     apiClient
-      .get<FetchResponse<T>>(endpoint)
+      .get<FetchResponse<T>>(endpoint, { signal: controller.signal })
       .then((response) => {
         setData(response.data.results);
         setIsLoading(false);
